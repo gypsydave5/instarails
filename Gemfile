@@ -14,9 +14,17 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 
 group :test, :development do
-  gem 'capybara'
-  gem 'rspec-rails'
   gem 'spring'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
