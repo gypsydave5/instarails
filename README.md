@@ -18,3 +18,16 @@ PostgreSQL
 
 - devise
 - others to follow
+
+Dependencies
+------------
+
+I'm using Ruby 2.1.2. You'll need to have PostgresSQL installed and running on
+your system.
+
+Testing
+-------
+
+Testing is done with Rspec - just run `rspec` from the root directory to run all
+the suites.
+
