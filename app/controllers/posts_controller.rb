@@ -15,4 +15,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    flash[:notice] = "Post deleted!"
+    redirect_to root_path
+  end
+
 end

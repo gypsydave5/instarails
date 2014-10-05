@@ -25,3 +25,31 @@ end
 Then(/^I should see the image "(.*?)"$/) do |image|
   expect(page.find('img')['src']).to have_content(image)
 end
+
+Given(/^that I made a post (\d+) minutes ago$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
+end
+
+Given(/^that "(.*?)" has made a post with message "(.*?)"$/) do |username, message|
+  visit '/accounts/sign_up'
+  steps %Q{
+    When I sign up normally as "#{username}" from "#{username}@#{username}.com"
+  }
+  user = User.find_by(username: username)
+  Post.create(message: message, user_id: user.id)
+  visit '/'
+end
+
+Then(/^I should not see "(.*?)"$/) do |content|
+  expect(page).not_to have_content(content)
+end
+
+Given(/^that "(.*?)" has made a post with message "(.*?)" two minutes ago$/) do |username, message|
+  visit '/accounts/sign_up'
+  steps %Q{
+    When I sign up normally as "#{username}" from "#{username}@#{username}.com"
+  }
+  user = User.find_by(username: username)
+  Post.create(message: message, user_id: user.id, created_at: (Time.now - 120))
+  visit '/'
+end
