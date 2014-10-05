@@ -12,6 +12,9 @@ Feature: Posts
     When I click on "What's new?"
     Then I should be on the new post page
 
+  #NB - this is commmented out because it's taking arounf 25s to run through the
+  #s3 upload.
+
   #Scenario: making a post
     #Given that I am signed in
     #And that I have clicked on "What's new"
@@ -32,3 +35,10 @@ Feature: Posts
     When I click on "Delete"
     Then I should not see "Hello mum"
     And I should see "Post deleted!"
+
+  Scenario: can't delete other people's posts
+    Given that "dave" has made a post with message "You can't delete this!"
+    But I am signed in as "bob"
+    When I am on the homepage
+    Then I should see "You can't delete this!"
+    And I should not see "Delete"

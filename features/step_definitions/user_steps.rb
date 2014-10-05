@@ -15,3 +15,15 @@ Given(/^that "(.*?)" has an account$/) do |username|
   And I click on "Sign out"
   }
 end
+
+Given(/^I am signed in as "(.*?)"$/) do |name|
+  visit '/'
+  click_on "Sign out"
+  visit "/accounts/sign_up"
+  password = "12345678"
+  fill_in "Email", with: "#{name}@email.com"
+  fill_in "Username", with: name
+  fill_in "Password", with: password
+  fill_in "Password confirmation", with: password
+  click_on "Join Instarails"
+end
