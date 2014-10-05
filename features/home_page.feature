@@ -20,4 +20,4 @@ Feature: Home page
     When I click on "Log in"
     Then I should be on the log in page
       And I should see "Log in to Instarails"
-  
+

@@ -1,0 +1,6 @@
+-if user_signed_in?
+  =link_to "What's new?", new_user_post_path(current_user)
+-@posts.each do |post|
+  %article{class: "instarails_post", id: "post_id_#{post.id}"}
+    =image_tag post.image.url(:medium)
+    %p=post.message

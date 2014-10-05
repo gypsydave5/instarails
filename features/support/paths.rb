@@ -13,17 +13,12 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-		when /the Chitter home page/
-			'/'
+    when /the sign up page/
+      '/accounts/sign_up'
 
-		when /the Chitter sign up page/
-			'/users/new'
+    when /the sign in page/
+      '/accounts/sign_in'
 
-		when /the Chitter log in page/
-			'/sessions/new'
-
-		when /the new chit page/
-			'/chits/new'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

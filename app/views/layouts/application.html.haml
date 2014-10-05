@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %title Instarails
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %header
+      %h1 Instarails
+      %nav
+        %ul
+          -if user_signed_in?
+            %h3
+              = current_user.username
+            %li
+              =link_to "Sign out", destroy_user_session_path, method: :delete
+          -else
+            %li
+              =link_to "Log in", new_user_session_path
+            %li
+              =link_to "Sign up", new_user_registration_path
+      %div=notice
+      %div=alert
+    = yield
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
