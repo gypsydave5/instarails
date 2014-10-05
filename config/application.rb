@@ -18,7 +18,16 @@ module Instarails
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-
+    #
+    config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_host_name => "s3-eu-west-1.amazonaws.com",
+      :s3_credentials => {
+        :bucket => Rails.application.secrets.aws_s3_bucket_name,
+        :access_key_id => Rails.application.secrets.aws_access_key_id,
+        :secret_access_key => Rails.application.secrets.aws_access_key_secret
+      }
+    }
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'

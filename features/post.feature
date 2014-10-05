@@ -19,6 +19,5 @@ Feature: Posts
     And I put add the path for a picture in the picture field
     And I click on "Make post"
     Then I should see "This is my test post"
-    #And show me the page
     And I should see the image "test_image.jpg"
     And I should be on the homepage
