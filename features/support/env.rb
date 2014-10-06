@@ -5,6 +5,16 @@
 # files.
 
 require 'cucumber/rails'
+#require 'factory_girl_rails'
+#FactoryGirl.find_definitions
+
+World(FactoryGirl::Syntax::Methods)
+FactoryGirl.factories.clear
+include Warden::Test::Helpers
+include ActionDispatch::TestProcess
+Warden.test_mode!
+
+#require_relative("../../spec/factories/factories.rb")
 
 #Capybara.default_host = 'example.org'
 

@@ -1,29 +1,18 @@
 Given(/^that I am signed in$/) do
-  visit "/accounts/sign_up"
-  password = "12345678"
-  fill_in "Email", with: "my@email.com"
-  fill_in "Username", with: "mememememe"
-  fill_in "Password", with: password
-  fill_in "Password confirmation", with: password
-  click_on "Join Instarails"
+  user = create(:user)
+  login_as(user, :scope => :user)
 end
 
 Given(/^that "(.*?)" has an account$/) do |username|
-  visit '/accounts/sign_up'
-  steps %Q{
-  When I sign up normally as "#{username}" from "#{username}@#{username}.com"
-  And I click on "Sign out"
-  }
+  create(:user, username: username)
 end
 
 Given(/^I am signed in as "(.*?)"$/) do |name|
-  visit '/'
-  click_on "Sign out"
-  visit "/accounts/sign_up"
-  password = "12345678"
-  fill_in "Email", with: "#{name}@email.com"
-  fill_in "Username", with: name
-  fill_in "Password", with: password
-  fill_in "Password confirmation", with: password
-  click_on "Join Instarails"
+  user = create(:user, username: name)
+  login_as(user, :scope => :user)
+end
+
+When(/^I sign in as "(.*?)"$/) do |user|
+  this_user = User.find_by(username: user)
+  login_as(this_user, :scope => :user)
 end

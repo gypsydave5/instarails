@@ -16,6 +16,7 @@ Feature: Sign up
 
   Scenario: signing out
     Given that I am signed in
+    And that I am on the homepage
     When I click on "Sign out"
     Then I should see "Sign up"
     And I should see "Log in"

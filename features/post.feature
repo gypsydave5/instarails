@@ -9,6 +9,7 @@ Feature: Posts
 
   Scenario: able to make posts when signed in
     Given that I am signed in
+    And I am on the homepage
     When I click on "What's new?"
     Then I should be on the new post page
 
@@ -41,4 +42,24 @@ Feature: Posts
     But I am signed in as "bob"
     When I am on the homepage
     Then I should see "You can't delete this!"
+    And I should see "bob"
     And I should not see "Delete"
+
+  Scenario: shows who posted the post
+    Given that "Conan" has made a post with message "What is best in life?"
+    But I am signed in as "Krull"
+    When I am on the homepage
+    Then I should see "What is best in life?"
+    And I should see "Posted by Conan"
+
+  Scenario: editing a post
+    Given that "Arnold" has made a post with message "Get to the chopper!"
+    When I sign in as "Arnold"
+    And I am on the homepage
+    And I click on "Edit post"
+    And I fill in the form with these details:
+      | Message | "DO IT!"|
+    And I click on "Make changes"
+    Then I should be on the homepage
+    And I should see "DO IT!"
+

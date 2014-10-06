@@ -16,3 +16,9 @@ Before('@bad_facebook') do
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:facebook] = :invalid_credentials
 end
+
+After do
+  Warden.test_reset!
+end
+
+

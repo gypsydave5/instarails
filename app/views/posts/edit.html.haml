@@ -1,0 +1,6 @@
+=form_for [@user, @post] do |f|
+  =f.label :message
+  =f.text_area :message
+  =f.label :image
+  =f.file_field :image
+  =f.submit "Make changes"

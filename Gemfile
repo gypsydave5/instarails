@@ -2,8 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.6'
 
+gem 'autoprefixer-rails'
 gem 'aws-sdk'
 gem 'bcrypt', '~> 3.1.7'
+gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'haml-rails'
@@ -18,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 
 group :test, :development do
+  gem 'factory_girl_rails'
   gem 'spring'
 end
 
@@ -25,7 +28,6 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
   gem 'launchy'
   gem 'poltergeist'
   gem 'rspec-rails'

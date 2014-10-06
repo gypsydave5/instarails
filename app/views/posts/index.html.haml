@@ -2,7 +2,12 @@
   =link_to "What's new?", new_user_post_path(current_user)
 -@posts.each do |post|
   %article{class: "instarails_post", id: "post_id_#{post.id}"}
-    %p.time_since_posted Posted #{time_ago_in_words(post.created_at)} ago
     =image_tag post.image.url(:medium)
-    %p=post.message
-    =link_to "Delete", "/users/#{post.user_id}/posts/#{post.id}", method: :delete
+    %p.message=post.message
+    -if current_user && current_user.id == post.user_id
+      =link_to "Delete", user_post_path(current_user, post), method: :delete
+      =link_to "Edit post", edit_user_post_path(current_user, post)
+    =link_to "Like", user_post_likes_path(post.user_id, post.id), method: :post
+    %p.likes Likes: #{post.likes.count}
+    %p.posted_by Posted by #{post.user.username}
+    %p.time_since_posted Posted #{time_ago_in_words(post.created_at)} ago
